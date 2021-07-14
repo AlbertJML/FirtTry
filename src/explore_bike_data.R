@@ -213,4 +213,19 @@ rides %>%
         mutate(month = toupper(month))
 
 
+###plot with weather factor
+ggplot(bike3)+
+        geom_point(aes(x=temp,y=cnt),
+                   color="orangered",alpha=0.2)+
+        facet_wrap(~weather_fac) +
+        ggtitle("Ridership and Temperature") +
+        labs(x="Temperature", y= "Ridership")+
+        theme_linedraw() +
+        theme(
+                strip.background = element_rect(fill = NA),
+                strip.text = element_text(color = "black")
+                )
+
+#Saving data
+write_csv(bike3,"data/bike_final.csv")
         
